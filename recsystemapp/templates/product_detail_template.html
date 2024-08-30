@@ -1,0 +1,91 @@
+<!-- Product Detail Template -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - REDSTORE</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{% static 'images/logo.png'%}" width="125px">
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="products.html">Product</a></li>
+                        <li><a href="account.html">Account</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html">
+                    <img src="{% static 'images/cart.png'%}" width="30px" height="30px" alt="Cart">
+                </a>
+                <img src="{% static 'images/menu.png'%}" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+
+<!-- Product Detail Section -->
+<section class="product-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Product Image -->
+        <img src="{% static 'product images/product-16.jpg'%}" alt="{{ data.product_name }}" class="img-fluid" width="45%" height="45%">
+      </div>
+      <div class="col-md-6">
+        <!-- Product Information -->
+        <h1>{{ data.0.Name }}</h1>
+        <p>{{ data.product_description }}</p>
+        <ul>
+          <li><strong>Price:</strong> {{ data.0.Price }}</li>
+          <li><strong>Brand:</strong> {{ data.0.Brand }}</li>
+          <li><strong>Category:</strong> {{ data.0.Label }}</li>
+          <li><strong>Availability:</strong> {{ data.product_availability }}</li>
+        </ul>
+        <!-- Add to Cart Button -->
+        <button class="btn btn-primary">Add to Cart</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Product Features -->
+        <h2>Features</h2>
+        <ul>
+          {% for feature in data.product_features %}
+          <li>{{ feature }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Product Reviews -->
+        <h2>Reviews</h2>
+        <ul>
+          {% for review in data.product_reviews %}
+          <li>
+            <strong>{{ review.reviewer_name }}</strong>
+            <p>{{ review.review_text }}</p>
+            <span>{{ review.review_rating }} / 5</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer>
+  <!-- Footer content -->
+</footer>
+</body>
+</html>

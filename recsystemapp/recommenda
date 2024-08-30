@@ -1,0 +1,53 @@
+from django.http import JsonResponse
+from django.shortcuts import render
+import joblib
+from sklearn.metrics.pairwise import sigmoid_kernel
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+
+def get_recommendations(request):
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        if product_name:
+            # Get the product object from the database
+            product = Product.objects.get(name=product_name)
+
+            # Create an instance of the recommendation model
+            recommendation_model = RecommendationModel()
+
+            # Get the recommendations from the model
+            recommendations = recommendation_model.get_recommendations(product)
+
+            # Return the recommendations as a JSON response
+            return JsonResponse({'recommendations': recommendations})
+        else:
+            return JsonResponse({'error': 'Product name is required'})
+    else:
+        return JsonResponse({'error': 'Invalid request method'})
+
+# Recommendation model class
+class RecommendationModel:
+    def get_recommendations(self, product):
+        # Load the trained model
+        model = load_model('recommendation_model.h5')
+
+        # Get the product features
+        product_features = product.features
+
+        # Get the similar products
+        similar_products = model.predict(product_features)
+
+        # Get the product names and IDs
+        product_names = [product.name for product in similar_products]
+        product_ids = [product.id for product in similar_products]
+
+        # Return the recommendations
+        return {'product_names': product_names, 'product_ids': product_ids}
+
+# Load the trained model
+def load_model(model_path):
+    # Load the trained model using Keras or TensorFlow
+    from keras.models import load_model
+    model = load_model(model_path)
+    return model

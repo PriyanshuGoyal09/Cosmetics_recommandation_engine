@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - REDSTORE</title>
+    <link rel="stylesheet" href="{%static 'styles.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{%static 'images/logo.png'%}" width="125px">
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="{%url 'home'%}">Home</a></li>
+                        <li><a href="{%url 'products'%}">Product</a></li>
+                        <li><a href="{%url 'account'%}">Account</a></li>
+                        <li><a href="{%url 'contact'%}">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="{% url 'cart'%}">
+                    <img src="{% static 'images/cart.png' %}" width="30px" height="30px" alt="Cart">
+                </a>
+                <img src="{% static 'images/menu.png'%}" class="menu-icon" onclick="menutoggle()">
+            </div>
+            
+        </div>
+    </div>
+    <div class="small-container">
+        <div class="row">
+            <h2>All Products</h2>
+            <select>
+                <option>Default sorting</option>
+                <option>Sort by price</option>
+                <option>Sort by popularity</option>
+                <option>Sort by rating</option>
+                <option>Sort by sale</option>
+            </select>
+        </div>
+        
+        <div class="row">
+            <div class="row">
+                {% for item in data %}
+                    <div class="col-4">
+                        <img src="{% static 'product images/product-1.jpg'%}">
+                        <h4>{{ item.Name }}</h4>
+                        <div class="rating">
+                            <script>
+                                var rating = { rating };
+                                var stars = document.createElement('div');
+                                for (var i = 0; i < rating; i++) {
+                                    stars.innerHTML += '<i class="fa fa-star"></i>';
+                                    }
+                                stars.innerHTML+= '<i class="fa fa-star-o"></i>';
+                            </script>
+                        </div>
+                        <p>₹{{ item.Price }}.00</p>
+                        <form action="{% url 'productdetails'%}" method="get">
+                            <input type="hidden" name="name" value="{{ item.id }}">
+                            <button type="submit">Buy Now</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+
+        <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594</span>
+        </div>
+          </div>
+              </div>  
+     <!------------footer-------->
+
+     <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download our App</h3>
+                    <p>Download App for Android and iOS mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="{% static 'images/play-store.png'%}">
+                        <img src="{% static 'images/app-store.png'%}">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="{% static 'images/logo-white.png'%}">
+                    <p>Our purpose is to sustainably make the pleasure and benefits of sports accessible to the many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">copyright 2024 - East Tutorials</p>
+        </div>
+    </div>
+<!----------js fir toggle menu---------->
+    <script> 
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight = "0px")
+        {                                   
+            MenuItems.style.maxHeight = "200px"
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+    </script>
+</body>
+</html>

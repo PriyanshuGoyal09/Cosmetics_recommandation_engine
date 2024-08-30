@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #f0f4f8, #e1e8f0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('https://i.pinimg.com/736x/e0/05/52/e0055232c3cb16301796cc2d389446e8.jpg');
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://i.pinimg.com/736x/e0/05/52/e0055232c3cb16301796cc2d389446e8.jpg") center/cover no-repeat;
+            background-blur: 4px;
+        }
+
+        .form-container {
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: black ;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            background-color:  DodgerBlue;
+            border: none;
+            border-radius: 6px;
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #004494;
+            transform: translateY(0);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(to top left, green, #0056b3);
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0.3;
+            transform: rotate(-10deg);
+            top: -10%;
+            left: -10%;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 0%;
+            background: white;
+            z-index: -2;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" <p style="background-image: url('https://i.pinimg.com/736x/e0/05/52/e0055232c3cb16301796cc2d389446e8.jpg');">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form method="POST" action="/signup/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="First_Name">First Name</label>
+                    <input type="text" id="First_Name" name="First_Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Last_Name">Last Name</label>
+                    <input type="text" id="Last_Name" name="Last_Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="Email" id="Email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="Password" id="Password" name="Password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+                Already have account<a href="http://127.0.0.1:8000/login/  "> Login</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

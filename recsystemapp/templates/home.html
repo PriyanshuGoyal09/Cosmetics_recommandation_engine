@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDSTORE</title>
+    <link rel="stylesheet" href="{%static 'styles.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="{% static '\images\logo.png' %}" width="125px">
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="{% url 'home'%}">Home</a></li>
+                        <li><a href="{%url 'products'%}">Product</a></li>
+                        <li><a href="{%url 'account'%}">Account</a></li>
+                        <li><a href="{%url 'contact'%}">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="{% url 'cart' %}">
+                    <img src="{% static 'images/cart.png'%}" width="30px" height="30px" alt="Cart">
+                </a>
+                <img src="{% static 'images/menu.png'%}" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Beauty begins the Moment <br> you decide to be yourself</h1>
+                    <p>A smile is the most beautiful<br>curve on a woman's body.</p>
+                    <a href="{%url 'products'%}" class="btn">Explore Now &#8594;</a> 
+                </div>
+                <div class="col-2">
+                    <img src="{% static 'images/image1.png'%}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------featured categories------------>
+    <div class="categories">
+        <div class="row">
+            <div class="col-3">
+                <img src="{% static 'images/cosmetic-1.jpg'%}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'images/cosmetic-3.jpg'%}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'images/cosmetic-2.jpg'%}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'images/cosmetic-5.jpg'%}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'product images/product-16.jpg'%}">
+            <div>
+        </div>
+    </div>
+
+    <!---------featured products --------->
+    <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+            <div class="row">
+                {% for item in data %}
+                    <div class="col-4">
+                        <a href="{% url 'productdetails'%}">
+                            <img src="{% static 'product images/product-1.jpg'%}">
+                            <h4>{{ item.Name }}</h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                        </a>
+                        <p>₹{{ item.Price }}.00</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+                
+                               
+<!-----------offer----------->
+      <div class="offer">
+        <div class="small-container">
+            <div class="row">
+               <div class="col-2">
+                 <img src="{% static 'product images/product-17.jpg'%}">
+               </div>
+            </div class="col-2">
+            <p>Exclusively Available on RedStore<p>
+            <h1>cosmetic mockup</h1>
+            <small>With a commitment to excellence, our skincare range stands as a beacon of trust and efficacy.<br> Each bottle encapsulates our dedication to your beauty journey, ensuring you receive only the best for your skin. Elevate your skincare routine with products that deliver visible and lasting results.
+            </small>
+            <a href=""class="btn">Buy Now &#8594;</a>
+        </div>
+     </div>
+   </div>
+</div>
+<!------------ testimonial------------>
+        <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Masahiko Uotani is president and Group CEO of shiseido,a japan-based beauty company founded in 1872.<br>mr.uotani joined shiseido in April.2014 as the first shiseido president</A></com></japan-based></ja></ja></Grou></Grou> </p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <img src="{% static 'images/ceo-2.jpg'%}">
+                    <h3>shiseido masahiko</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>“A healthy company grows ahead of the market,” said the executive, sitting in a conference room in Coty’s Amsterdam headquarters. “After that, I really would like Coty to stand for a forward-thinking company, with the most passionate experts.”</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <img src="{% static 'images/ceo.webp'%}">
+                    <h3>SUe Y Nabi</h3>
+                 </div>
+                 <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>There is no plan from my angle to enter a transition period. We are, by the way, in the middle of the big business transition out there. There is a lot of evolution issues around the world,” he continued. “It’s a very exciting moment, but also very important moment. </p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <img src="{% static 'images/ceo-3.webp' %}">
+                    <h3>Fabrizio Freda</h3>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+  <!---------------- brands ------------>
+      <div class="brands">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{% static 'images/logo-shiseido.png'%}">{% static '
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-bof.png'%}">
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-estee.png'%}">
+                </div>
+           </div>
+        </div>
+     </div>
+
+ <!------------footer-------->
+
+ <div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download our App</h3>
+                <p>Download App for Android and iOS mobile phone.</p>
+                <div class="app-logo">
+                    <img src="{% static 'images/play-store.png'%}">
+                    <img src="{% static 'images/app-store.png'%}">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="{% static 'images/logo-white.png'%}">
+                <p>Our purpose is to sustainably make the pleasure and benefits of sports accessible to the many.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>YouTube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">copyright 2024 - East Tutorials</p>
+    </div>
+</div>
+<!----------js fir toggle menu---------->
+    <script> 
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight = "0px")
+        {                                   
+            MenuItems.style.maxHeight = "200px"
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+    </script>
+</body>
+</html>
